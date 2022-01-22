@@ -1,5 +1,9 @@
 use anchor_lang::prelude::*;
-use spl_token_lending::instruction::deposit_reserve_liquidity;
+use anchor_spl::token::Token;
+use solend_utils::SolendDevnet;
+
+pub mod solend_utils;
+pub mod utils;
 
 declare_id!("Fg6PaFpoGXkYsidMpWTK6W2BeZ7FEfcYkg476zPFsLnS");
 
@@ -14,4 +18,6 @@ pub mod solendcpi {
 #[derive(Accounts)]
 pub struct Initialize<'info> {
     pub payer: Signer<'info>,
+
+    pub solend_devnet: Program<'info, SolendDevnet>,
 }
